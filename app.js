@@ -66,10 +66,19 @@ app.get('/restaurant/new', (req, res) => {
   res.render('new')
 })
 
+// create function
 app.post('/restaurant/new', (req, res) => {
   const name = req.body.name
   return Restaurant.create({ name })
     .then( () => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+// delete function
+app.post('/restaurants/:restaurantId/delete', (req, res) => {
+  Restaurant.findById(req.params.restaurantId)
+    .then(restaurant => restaurant.remove())
+    .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
