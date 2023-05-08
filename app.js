@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars')
 
 // 載入 mongoose
 const mongoose = require('mongoose') 
-const restaurant = require('./models/restaurant')
+
 // 載入 Restaurant model
 const Restaurant = require('./models/restaurant')
 
@@ -52,15 +52,49 @@ app.get('/', (req, res) => {
 // render search
 app.get('/search', (req, res) => {
   const keyword = req.query.keyword
-  const searchResults = restaurantInfo.filter(restaurant => 
-    restaurant.name.toLowerCase().includes(keyword.toLowerCase().trim()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase().trim()))
-  // 沒有搜尋結果另外處理
-    if (!searchResults.length) {
-    res.render('no_index', { keyword })
-  } else {
-    res.render('index', { restaurantInfo: searchResults, keyword })
-  }
+  const keywordClean = keyword.trim().toLowerCase()
+  Restaurant.find({})
+    .lean()
+    .then(restaurants => {
+      const filterRestaurants = restaurants.filter(
+        restaurant => 
+          restaurant.name.toLowerCase().includes(keywordClean) || 
+          restaurant.category.toLowerCase().includes(keywordClean))
+      if (!filterRestaurants.length) {
+        res.render('no_index', { keyword })
+      } else {
+        res.render('index', { restaurants: filterRestaurants, keyword })
+      }
+    })
+    .catch(error => console.log(error))
 })
+  
+  
+    // .then(restaurants => {
+    //   const rrs = JSON.parse(restaurants, 0)
+    //   const searchResults = rrs.filter(restaurant =>
+    //     restaurant.name.toLowerCase().includes(keyword.toLowerCase().trim()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase().trim()))
+    //   // 沒有搜尋結果另外處理
+    //   if (!searchResults.length) {
+    //     res.render('no_index', { keyword })
+    //   } else {
+    //     res.render('index', { restaurants: searchResults, keyword })
+    //   }
+    // })
+    // .catch(error => console.log(error))
+
+
+// app.get('/search', (req, res) => {
+//   const keyword = req.query.keyword
+//   const searchResults = restaurantInfo.filter(restaurant => 
+//     restaurant.name.toLowerCase().includes(keyword.toLowerCase().trim()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase().trim()))
+//   // 沒有搜尋結果另外處理
+//     if (!searchResults.length) {
+//     res.render('no_index', { keyword })
+//   } else {
+//     res.render('index', { restaurantInfo: searchResults, keyword })
+//   }
+// })
 
 // render new
 app.get('/restaurant/new', (req, res) => {
