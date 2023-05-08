@@ -23,9 +23,9 @@
       <div class="row row-cols-sm-3">
 
         <!-- 動態產生 -->
-        {{#each restaurantInfo}}
+        {{#each restaurants}}
         <div>
-          <a href="/restaurants/{{this.id}}" class="text-secondary">
+          <a href="/restaurants/{{this._id}}" class="text-secondary">
             <div class="card mb-3">
               <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
               <div class="card-body p-3">
@@ -42,7 +42,7 @@
           </a>
           <div class="text-end mb-5">
             <a href="" class="m-2 link-success">Edit</a>
-            <a href="" class="m-2 link-info">Detail</a>
+            <a href="/restaurants/{{this._id}}" class="m-2 link-info">Detail</a>
             <form action="" method="POST" style="display: inline" class="m-2">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
