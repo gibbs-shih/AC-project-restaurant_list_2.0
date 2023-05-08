@@ -1,0 +1,9 @@
+
+<div class="container mt-5">
+  <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
+    <label for="name">欲更新的餐廳名稱</label>
+    <input type="text" name="name" placeholder="請輸入要更新的餐廳名稱" id="name" value="{{restaurant.name}}">
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/" class="btn btn-primary">Back</a>
+  </form>
+</div>

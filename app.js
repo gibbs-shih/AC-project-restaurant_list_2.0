@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 
 // 載入 mongoose
 const mongoose = require('mongoose') 
+const restaurant = require('./models/restaurant')
 // 載入 Restaurant model
 const Restaurant = require('./models/restaurant')
 
@@ -90,6 +91,25 @@ app.get('/restaurants/:restaurantId', (req, res) => {
   .catch(error => console.log(error))
 })
 
+// render edit
+app.get('/restaurants/:restaurantId/edit', (req, res) => {
+  Restaurant.findById(req.params.restaurantId)
+    .lean()
+    .then(restaurant => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:restaurantId/edit', (req, res) => {
+  const name = req.body.name
+  const id = req.params.restaurantId
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = name
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
+    .catch(error => console.log(error))
+})
 
 // start and listen on the Express server
 app.listen(port, () => {
