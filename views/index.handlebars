@@ -16,6 +16,11 @@
   </div>
 </div>
 
+<!-- create button -->
+<div class="container mt-5 text-center">
+  <a href="/restaurant/new" class="btn btn-info">Create</a>
+</div>
+
 <!-- restaurant list -->
 <div class="container mt-5">
   <div class="row">
@@ -43,7 +48,7 @@
           <div class="text-end mb-5">
             <a href="" class="m-2 link-success">Edit</a>
             <a href="/restaurants/{{this._id}}" class="m-2 link-info">Detail</a>
-            <form action="" method="POST" style="display: inline" class="m-2">
+            <form action="/restaurants/{{this._id}}/delete" method="POST" style="display: inline" class="m-2">
               <button type="submit" class="btn btn-danger">Delete</button>
             </form>
           </div>

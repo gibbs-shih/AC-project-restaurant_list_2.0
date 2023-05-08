@@ -33,6 +33,8 @@ const app = express()
 
 // set static files
 app.use(express.static('public'))
+// set body parser
+app.use(express.urlencoded({extended: true}))
 
 // set up template engine (handlebars and layout)
 app.engine('handlebars',exphbs({defaultLayout: 'main'}))
@@ -57,6 +59,18 @@ app.get('/search', (req, res) => {
   } else {
     res.render('index', { restaurantInfo: searchResults, keyword })
   }
+})
+
+// render new
+app.get('/restaurant/new', (req, res) => {
+  res.render('new')
+})
+
+app.post('/restaurant/new', (req, res) => {
+  const name = req.body.name
+  return Restaurant.create({ name })
+    .then( () => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 // render show
