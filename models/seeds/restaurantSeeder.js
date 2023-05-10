@@ -15,18 +15,7 @@ db.once('open', () => {
   console.log('mongodb connected!')
 
    // 建立種子資料
-  seedInfoList.forEach(item => Restaurant.create({
-    id: item.id,
-    name: item.name,
-    name_en: item.name_en,
-    category: item.category,
-    image: item.image,
-    location: item.location,
-    phone: item.phone,
-    google_map: item.google_map,
-    rating: item.rating,
-    description: item.description
-  }))
+   Restaurant.create(seedInfoList)
   
   console.log('done!')
 })

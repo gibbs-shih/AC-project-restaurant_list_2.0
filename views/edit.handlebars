@@ -1,8 +1,50 @@
 
-<div class="container mt-5">
+<div class="container mt-5 text-secondary">
   <form action="/restaurants/{{restaurant._id}}/edit" method="POST">
-    <label for="name">欲更新的餐廳名稱</label>
-    <input type="text" name="name" placeholder="請輸入要更新的餐廳名稱" id="name" value="{{restaurant.name}}">
+    <div class="mb-3">
+      <label for="name">請輸入要更新的餐廳名稱</label>
+      <input type="text" name="name" class="form-control border border-success" id="name" value="{{restaurant.name}}">
+    </div>
+    <div class="mb-3">
+      <label for="name_en">請輸入要更新的英文餐廳名稱</label>
+      <input type="text" name="name_en" class="form-control border border-success" id="name_en" value="{{restaurant.name_en}}">
+    </div>
+    <div class="mb-3">
+      <label for="category">請選擇或輸入要更新的餐廳類別</label>
+      <input list="categories" name="category" id="category" class="form-control border border-success">
+      <datalist id="categories">
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>酒吧</option>
+        <option>咖啡</option>
+      </datalist>
+    </div>
+    <div class="mb-3">
+      <label for="name">請輸入要更新的餐廳圖片網址連結</label>
+      <input type="text" name="image" id="image" class="form-control border border-success">
+    </div>
+    <div class="mb-3">
+      <label for="location">請輸入要更新的餐廳地址</label>
+      <input type="text" name="location" id="location" value="{{restaurant.location}}" class="form-control border border-success">
+    </div>
+    <div class="mb-3">
+      <label for="phone">請輸入要更新的餐廳電話</label>
+      <input type="text" name="phone" id="phone" value="{{restaurant.phone}}" class="form-control border border-success">
+    </div>
+    <div class="mb-3">
+      <label for="google_map">請輸入要更新的餐廳google map網址連結</label>
+      <input type="text" name="google_map" id="google_map" class="form-control border border-success">
+    </div>
+    <div class="mb-3">
+      <label for="rating">請輸入要更新的餐廳評分</label>
+      <input type="text" name="rating" id="rating" value="{{restaurant.rating}}" class="form-control border border-success">
+    </div>
+    <div class="mb-3">
+        <label for="description">請輸入要更新的餐廳描述</label>
+        <textarea type="text" name="description" rows="3" class="form-control border border-success" id="description" “></textarea>
+    </div>
     <button type="submit" class="btn btn-success">Save</button>
     <a href="/" class="btn btn-primary">Back</a>
   </form>

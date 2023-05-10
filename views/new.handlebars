@@ -1,6 +1,41 @@
 <div class="container mt-5">
   <form action="/restaurant/new" method="POST">
-    <input type="text" name="name" placeholder="請輸入餐廳名稱">
+    <div class="mb-3">
+      <input type="text" name="name" class="form-control" placeholder="請輸入餐廳名稱(必填)" required>
+    </div>
+    <div class="mb-3">
+      <input type="text" name="name_en" class="form-control" placeholder="請輸入英文餐廳名稱">
+    </div>
+    <div class="mb-3">
+      <input list="categories" name="category" class="form-control" placeholder="請選擇或輸入餐廳類別(必填)" required>
+      <datalist id="categories">
+        <option>中東料理</option>
+        <option>日本料理</option>
+        <option>義式餐廳</option>
+        <option>美式</option>
+        <option>酒吧</option>
+        <option>咖啡</option>
+      </datalist>
+    </div>
+    <div class="mb-3">
+      <input type="text" name="image" class="form-control" placeholder="請輸入餐廳圖片網址連結">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="location" class="form-control" placeholder="請輸入餐廳地址">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="phone" class="form-control" placeholder="請輸入餐廳電話">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="google_map" class="form-control" placeholder="請輸入餐廳google map網址連結">
+    </div>
+    <div class="mb-3">
+      <input type="text" name="rating" class="form-control" placeholder="請輸入餐廳評分(必填)" required>
+    </div>
+    <div class="mb-3">
+      <textarea name="description" rows="3" class="form-control" placeholder="請輸入餐廳描述"></textarea>
+    </div>
     <button type="submit" class="m-3 btn btn-info">Create</button>
+    <a href="/" class="m-3 btn btn-primary">Back</a>
   </form>
 </div>

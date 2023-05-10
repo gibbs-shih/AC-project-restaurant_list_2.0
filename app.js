@@ -103,8 +103,13 @@ app.get('/restaurant/new', (req, res) => {
 
 // create function
 app.post('/restaurant/new', (req, res) => {
-  const name = req.body.name
-  return Restaurant.create({ name })
+  const info = {};
+  for (const key in req.body) {
+    if (req.body[key].length) {
+      info[key] = req.body[key]
+    }
+  }
+  return Restaurant.create( info )
     .then( () => res.redirect('/'))
     .catch(error => console.log(error))
 })
