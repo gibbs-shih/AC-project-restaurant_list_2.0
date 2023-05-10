@@ -139,11 +139,18 @@ app.get('/restaurants/:restaurantId/edit', (req, res) => {
 })
 
 app.post('/restaurants/:restaurantId/edit', (req, res) => {
-  const name = req.body.name
+  const info = {};
+  for (const key in req.body) {
+    if (req.body[key].length) {
+      info[key] = req.body[key]
+    }
+  }
   const id = req.params.restaurantId
   return Restaurant.findById(id)
     .then(restaurant => {
-      restaurant.name = name
+      for (const key in info) {
+        restaurant[key] = info[key]
+      }
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${id}`))
