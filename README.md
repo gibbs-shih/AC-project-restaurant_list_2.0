@@ -6,10 +6,11 @@
 
 畫面預覽：
 
-![首頁](https://user-images.githubusercontent.com/73210852/236931338-2d1ead2f-0bc8-4c42-a56d-7610a23ae279.png)
-![新增](https://user-images.githubusercontent.com/73210852/236931772-57da8e3b-f4eb-4ffb-b430-5e1be52b6271.png)
-![修改](https://user-images.githubusercontent.com/73210852/236931826-d4e0476b-c75e-46a9-9bca-c707402e9dab.png)
-![瀏覽](https://user-images.githubusercontent.com/73210852/236931881-ed208076-4f07-4682-b1a2-a994562ac89d.png)
+![首頁](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/d89d5fa3-a87f-4301-9e7e-8dab41f443a4)
+![新增](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/e8ca9db5-1083-476f-b090-71f30710fec6)
+![編輯](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/25323599-ebf5-4d44-95ac-3909bedaca69)
+![詳細資訊](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/b1f7fbfc-c075-4de6-9e49-af2558a62861)
+![搜尋](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/f03b72b8-a3c1-4977-9f75-0cc1cb43a683)
 
 ## 功能
 
