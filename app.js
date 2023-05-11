@@ -5,6 +5,12 @@ const exphbs = require('express-handlebars')
 // 載入mongoose設定
 require('./config/mongoose')
 
+// 載入 method-override
+const methodOverride = require('method-override')
+
+// 載入router 引用路由器
+const routes = require('./routes/index')
+
 // 載入 Restaurant model
 const Restaurant = require('./models/restaurant')
 
@@ -13,6 +19,9 @@ const port = 3000
 
 // start express
 const app = express()
+
+// 將 request 導入路由器
+app.use(routes)
 
 // set static files
 app.use(express.static('public'))
@@ -23,16 +32,11 @@ app.use(express.urlencoded({extended: true}))
 app.engine('handlebars',exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
-// render index
-app.get('/', (req, res) => {
-  Restaurant.find() // 取出 Restaurant model 裡的所有資料
-    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
-    .catch(error => console.log(error)) // 錯誤處理
-})
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 
 // render search
-app.get('/search', (req, res) => {
+app.get('/restaurants/search', (req, res) => {
   const keyword = req.query.keyword
   const keywordClean = keyword.trim().toLowerCase()
   Restaurant.find({})
@@ -51,40 +55,14 @@ app.get('/search', (req, res) => {
     .catch(error => console.log(error))
 })
   
-  
-    // .then(restaurants => {
-    //   const rrs = JSON.parse(restaurants, 0)
-    //   const searchResults = rrs.filter(restaurant =>
-    //     restaurant.name.toLowerCase().includes(keyword.toLowerCase().trim()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase().trim()))
-    //   // 沒有搜尋結果另外處理
-    //   if (!searchResults.length) {
-    //     res.render('no_index', { keyword })
-    //   } else {
-    //     res.render('index', { restaurants: searchResults, keyword })
-    //   }
-    // })
-    // .catch(error => console.log(error))
-
-
-// app.get('/search', (req, res) => {
-//   const keyword = req.query.keyword
-//   const searchResults = restaurantInfo.filter(restaurant => 
-//     restaurant.name.toLowerCase().includes(keyword.toLowerCase().trim()) || restaurant.category.toLowerCase().includes(keyword.toLowerCase().trim()))
-//   // 沒有搜尋結果另外處理
-//     if (!searchResults.length) {
-//     res.render('no_index', { keyword })
-//   } else {
-//     res.render('index', { restaurantInfo: searchResults, keyword })
-//   }
-// })
 
 // render new
-app.get('/restaurant/new', (req, res) => {
+app.get('/restaurants/new', (req, res) => {
   res.render('new')
 })
 
 // create function
-app.post('/restaurant/new', (req, res) => {
+app.post('/restaurants', (req, res) => {
   const info = {};
   for (const key in req.body) {
     if (req.body[key].length) {
@@ -97,7 +75,7 @@ app.post('/restaurant/new', (req, res) => {
 })
 
 // delete function
-app.post('/restaurants/:restaurantId/delete', (req, res) => {
+app.delete('/restaurants/:restaurantId', (req, res) => {
   Restaurant.findById(req.params.restaurantId)
     .then(restaurant => restaurant.remove())
     .then(() => res.redirect('/'))
@@ -120,7 +98,7 @@ app.get('/restaurants/:restaurantId/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:restaurantId/edit', (req, res) => {
+app.put('/restaurants/:restaurantId', (req, res) => {
   const info = {};
   for (const key in req.body) {
     if (req.body[key].length) {
