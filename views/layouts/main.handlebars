@@ -13,12 +13,18 @@
 <body>
 
   <!-- navigation -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="30"
-          height="30" class="d-inline-block align-top" alt="我的餐廳清單">
-        我的餐廳清單
+  <nav class="navbar navbar-light bg-light d-flex justify-content-around">
+    <div class="d-inline m-3">
+        <a class="navbar-brand" href="/">
+          <img src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/6227/restaurant-list-logo.png" width="35"
+            height="35" class="d-inline align-top" alt="我的餐廳清單">
+          <span class="h3">我的餐廳清單</span>
+        </a>
+    </div>
+    <!-- create button -->
+    <div class="text-end d-inline m-3">
+      <a href="/restaurants/new" class="btn btn-primary border border-info border-4 rounded-pill">
+        <span class="h4 p-3">新 增 餐 廳</span>
       </a>
     </div>
   </nav>
