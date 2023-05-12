@@ -23,7 +23,16 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
 
 // set up template engine (handlebars and layout)
-app.engine('handlebars',exphbs({defaultLayout: 'main'}))
+app.engine('handlebars', exphbs({
+  defaultLayout: 'main',
+  helpers: {
+    //compare whether two values are equal or not.
+    eq: function (value1, value2) {
+      return value1 === value2
+    }
+  }
+}))
+
 app.set('view engine', 'handlebars')
 
 // 設定每一筆請求都會透過 methodOverride 進行前置處理

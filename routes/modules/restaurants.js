@@ -5,21 +5,40 @@ const router = express.Router()
 // 載入 Restaurant model
 const Restaurant = require('../../models/restaurant')
 
+// use switch to decide sort definition
+function sortDefinition (sort) {
+  switch (sort) {
+    case "name_asc":
+      return { name: "asc"}
+    case "name_desc":
+      return { name: "desc"}
+    case "category":
+      return { category: "asc"}
+    case "location":
+      return { location: "asc"}
+    default:
+      return { _id: "asc"}
+  }
+}
+ 
+
 // render search
 router.get('/search', (req, res) => {
   const keyword = req.query.keyword
+  const sort = req.query.sort
   const keywordClean = keyword.trim().toLowerCase()
   Restaurant.find({})
     .lean()
+    .sort(sortDefinition(sort))
     .then(restaurants => {
       const filterRestaurants = restaurants.filter(
         restaurant =>
           restaurant.name.toLowerCase().includes(keywordClean) ||
           restaurant.category.toLowerCase().includes(keywordClean))
       if (!filterRestaurants.length) {
-        res.render('no_index', { keyword })
+        res.render('no_index', { keyword, sort })
       } else {
-        res.render('index', { restaurants: filterRestaurants, keyword })
+        res.render('index', { restaurants: filterRestaurants, keyword, sort })
       }
     })
     .catch(error => console.log(error))
