@@ -2,19 +2,21 @@
 
 此專案提供使用者瀏覽餐廳，並可以依條件搜尋餐廳資訊，如:餐廳名稱、類別
 
-使用者亦可新增餐廳資訊、編輯餐廳資訊、刪除餐廳資訊
+使用者亦可新增餐廳資訊、編輯餐廳資訊、刪除餐廳資訊、排序餐廳顯示方式
 
 畫面預覽：
 
-![首頁](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/d89d5fa3-a87f-4301-9e7e-8dab41f443a4)
+![首頁](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/b1cd2563-5231-4982-8eb2-5a2a0f05686e)
 ![新增](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/e8ca9db5-1083-476f-b090-71f30710fec6)
 ![編輯](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/25323599-ebf5-4d44-95ac-3909bedaca69)
 ![詳細資訊](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/b1f7fbfc-c075-4de6-9e49-af2558a62861)
-![搜尋](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/f03b72b8-a3c1-4977-9f75-0cc1cb43a683)
+![搜尋](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/c696a27d-2217-495e-82de-44ce0d8bc281)
 
 ## 功能
 
 - 依照餐廳名稱及餐廳類別搜尋餐廳
+
+- 依照所選條件排序餐廳顯示方式
 
 - 新增餐廳資訊、編輯餐廳資訊、刪除餐廳資訊
 
@@ -52,3 +54,4 @@
 - Bootstrap - 開源前端框架
 - MongoDB Atlas - 資料庫 
 - Mongoose - ODM
+- Git - 版本控制軟體
