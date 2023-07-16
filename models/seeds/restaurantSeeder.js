@@ -49,8 +49,8 @@ db.once('open', async() => {
     }
     console.log('All Seeders Generated!!!')
     process.exit()
-  } catch (err) {
-    console.log(err)
+  } catch (error) {
+    console.log(error)
     process.exit(1)
   }
 })
