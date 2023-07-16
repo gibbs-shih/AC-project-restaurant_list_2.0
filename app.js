@@ -7,6 +7,9 @@ const session = require('express-session')
 // 載入passport設定檔，要寫在 express-session 以後
 const usePassport = require('./config/passport')
 
+ // 引用connect-flash套件
+const flash = require('connect-flash')  
+
 // 載入mongoose設定
 require('./config/mongoose')
 
@@ -22,8 +25,9 @@ const port = 3000
 // start express
 const app = express()
 
-// set static files
+// set static files >> bootstrap改成從main.handlebars直接載入 這裡只載入style.css
 app.use(express.static('public'))
+
 // set body parser
 app.use(express.urlencoded({extended: true}))
 
@@ -51,9 +55,14 @@ app.use(session({
 }))
 usePassport(app)
 
+ // 掛載connect - flash套件
+app.use(flash()) 
+
 app.use((req, res, next) => {
   res.locals.isAuthenticated = req.isAuthenticated()
   res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')  // 設定 success_msg 訊息
+  res.locals.warning_msg = req.flash('warning_msg')  // 設定 warning_msg 訊息
   next()
 })
 
