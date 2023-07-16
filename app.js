@@ -10,6 +10,10 @@ const usePassport = require('./config/passport')
  // 引用connect-flash套件
 const flash = require('connect-flash')  
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 // 載入mongoose設定
 require('./config/mongoose')
 
@@ -49,7 +53,7 @@ app.use(methodOverride('_method'))
 
 // 使用cookie - session設定
 app.use(session({
-  secret: 'ThisIsMySecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))
