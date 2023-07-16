@@ -8,14 +8,15 @@
 
 畫面預覽：
 
-![登入](登入頁面.png)
-![註冊](註冊頁面.png)
-![提示訊息](提示訊息範例.png)
-![首頁](首頁.png)
-![新增](新增.png)
-![編輯](編輯.png)
-![詳細資訊](詳細.png)
-![搜尋](搜尋.png)
+![登入](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/92f4ecce-4bd9-4d17-b458-77a3871e3e78)
+![註冊](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/1f68ac79-8e26-483a-88d8-d5a8c3f1e798)
+![提示訊息](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/1ae6af32-1eca-40ae-bf8b-df0d8f775b32)
+![首頁](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/482480d2-2b49-4c1f-8624-8db799c2ea28)
+![新增](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/691e70a4-9eac-4937-b09f-495e1e4be45b)
+![編輯](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/932784cf-ce4e-471f-8077-b14413638ab8)
+![詳細資訊](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/869b2099-d4ed-471b-b8e8-3ece688147d3)
+![搜尋](https://github.com/gibbs-shih/AC-project-restaurant_list_2.0/assets/73210852/9ebcca41-9c06-4edb-b845-bc3745631624)
+
 
 ## 功能
 - 設置登入、註冊頁面，另可以使用Facebook進行登入
