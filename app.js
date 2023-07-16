@@ -2,6 +2,9 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 
+// 載入cookie - session設定
+const session = require('express-session')
+
 // 載入mongoose設定
 require('./config/mongoose')
 
@@ -38,6 +41,12 @@ app.set('view engine', 'handlebars')
 // 設定每一筆請求都會透過 methodOverride 進行前置處理
 app.use(methodOverride('_method'))
 
+// 使用cookie - session設定
+app.use(session({
+  secret: 'ThisIsMySecret',
+  resave: false,
+  saveUninitialized: true
+}))
 // 將 request 導入路由器
 app.use(routes) 
 
