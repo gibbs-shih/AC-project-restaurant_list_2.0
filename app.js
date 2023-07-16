@@ -4,6 +4,8 @@ const exphbs = require('express-handlebars')
 
 // 載入cookie - session設定
 const session = require('express-session')
+// 載入passport設定檔，要寫在 express-session 以後
+const usePassport = require('./config/passport')
 
 // 載入mongoose設定
 require('./config/mongoose')
@@ -47,6 +49,8 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+usePassport(app)
+
 // 將 request 導入路由器
 app.use(routes) 
 
