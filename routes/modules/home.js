@@ -7,7 +7,9 @@ const Restaurant = require('../../models/restaurant')
 
 // 定義首頁路由 render index
 router.get('/', (req, res) => {
-  Restaurant.find() // 取出 Restaurant model 裡的所有資料
+  const userId = req.user._id   // 變數設定
+  // 加入查詢條件
+  Restaurant.find({ userId }) // 取出 Restaurant model 裡的所有資料
     .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
     .sort({ _id: 'asc'}) // 用＿id升冪排序
     .then(restaurants => res.render('index', { restaurants })) // 將資料傳給 index 樣板
