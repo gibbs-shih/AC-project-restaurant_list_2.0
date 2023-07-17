@@ -11,7 +11,7 @@ const Restaurant = require('../restaurant.js')
 // 載入 user model
 const User = require('../user.js')
 
-const restaurantInfo = require('/Users/gibbsshih/project_restaurant_list/restaurant.json')
+const restaurantInfo = require('../../restaurant.json')
 const restaurantInfoList = restaurantInfo.results
 
 const SEED_USERS = [
